@@ -9,12 +9,39 @@ setInterval(() => {
 }, 1000);
 
 //Asia / Istanbul;
-function updateTime() {
+setInterval(() => {
   let istanbulDate = document.querySelector("#istanbul .date");
   let istanbulTime = document.querySelector("#time-istanbul");
   let istanbul = moment().tz("Asia/Istanbul");
 
   istanbulDate.innerHTML = istanbul.format("MMMM Do, YYYY");
   istanbulTime.innerHTML = istanbul.format("h:mm:ss[<small>] A[</small>]");
+}, 1000);
+
+//dropdown menu
+
+let selectCity = document.querySelector("#city");
+selectCity.addEventListener("change", updateCity);
+
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `   
+     <div class="current-city">
+          <div>
+              <h2>${cityName}</h2>
+                    <div class="date">${cityTime.format("MMMM Do, YYYY")}</div>
+             </div>
+             <div class="time">${cityTime.format(
+               "h:mm[<small>] A[</small>]"
+             )}</div>
+    </div>`;
 }
-setInterval(updateTime, 1000);
+updateCity();
+setInterval(updateCity, 1000);
+
+
+
+
