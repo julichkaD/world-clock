@@ -18,7 +18,7 @@ select {
   margin: 0 auto;
   border-radius: 5px;
   font-size: 18px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 h1 {
@@ -28,7 +28,7 @@ h1 {
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 28px;
 }
 
 .current-city {
